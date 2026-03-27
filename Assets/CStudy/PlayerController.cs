@@ -1,42 +1,30 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private bool isJumping = false;
+    void Start()
+    {
+
+        // 배열
+        /*
+        string[] enemies = new string[3];
+        enemies[0] = "슬라임";
+        enemies[1] = "고블린";
+        enemies[2] = "오크";
+        */
+
+        string[] enemies = {"슬라임", "고블린", "오크", "나쁜X"};
+
+        for(int i = 0; i < enemies.Length; i++)
+        {
+            Debug.Log(enemies[i]);
+        }
+
+    }
 
     void Update()
     {
-        var key = Keyboard.current;
-        if (key == null) return;
-
-        // 방향 점프
-        if (key.leftArrowKey.wasPressedThisFrame ||
-            key.rightArrowKey.wasPressedThisFrame ||
-            key.upArrowKey.wasPressedThisFrame)
-        {
-            if (isJumping)
-            {
-                Debug.Log("공중에서는 점프할 수 없습니다!");
-            }
-            else
-            {
-                isJumping = true;
-
-                if (key.leftArrowKey.wasPressedThisFrame)
-                    Debug.Log("왼쪽으로 점프!");
-                else if (key.rightArrowKey.wasPressedThisFrame)
-                    Debug.Log("오른쪽으로 점프!");
-                else if (key.upArrowKey.wasPressedThisFrame)
-                    Debug.Log("위로 점프!");
-            }
-        }
-
-        // 착지
-        if (key.spaceKey.wasPressedThisFrame)
-        {
-            isJumping = false;
-            Debug.Log("착지!");
-        }
+        
     }
+
 }
