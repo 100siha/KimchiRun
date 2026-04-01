@@ -4,8 +4,12 @@ using UnityEngine.InputSystem;
 
 public class NumberGame : MonoBehaviour
 {
-    int tryCount = 0;
-    
+    private int answer = 3;
+    private const int MaxTry = 5;
+    private int tryCount = 0;
+
+    private bool isOver = false;
+
     void Start()
     {
         Debug.Log("=============================");
@@ -18,6 +22,7 @@ public class NumberGame : MonoBehaviour
     void Update()
     {
         int input = -1;
+        if (isOver) return;
         
         if(Input.GetKeyDown(KeyCode.Alpha1)) input = 1;
         if(Input.GetKeyDown(KeyCode.Alpha2)) input = 2;
@@ -35,5 +40,30 @@ public class NumberGame : MonoBehaviour
     {
         tryCount++;
         Debug.Log($"입력: {input}, 시도 횟수: {tryCount}");
+
+        if (input == answer)
+        {
+            Debug.Log($"😍 정답입니다!! {tryCount}번 만에 맞추셨습니다!");
+            isOver = true;
+            return; //정답 처리하고 끝내는 함수
+        }
+
+        if (tryCount >= MaxTry)
+        {
+            Debug.Log($"실패!! 정답은 {answer}였습니다.");
+            isOver = true;
+            return;
+        }
+
+        if (input > answer)
+        {
+            Debug.Log("👇 작은 숫자를 입력해 주세요!");
+        }
+
+        else
+        {
+            Debug.Log("👆 큰 숫자를 입력해 주세요!");
+        }
+
     }
 }
