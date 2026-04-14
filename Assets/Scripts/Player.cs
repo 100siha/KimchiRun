@@ -3,6 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Animator anim;
 
     [Header("이동 설정")]
     public float movingSpeed = 6.5f; // 속도를 살짝 올렸습니다 (기존 5 -> 6.5). Inspector 덮어쓰기 방지를 위해 변수명 변경.
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         rb.gravityScale = 3f;
 
         // 시작할 때 플레이어 오브젝트의 월래 크기 절대값을 저장해둡니다.
@@ -69,6 +71,7 @@ public class Player : MonoBehaviour
         // ---------------- 점프 로직 ----------------
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            anim.SetInteger("state", 1);
             if (isGrounded)
             {
                 // 바닥일 경우: 선입력 타이머 가동
@@ -158,6 +161,7 @@ public class Player : MonoBehaviour
             if (!isGrounded)
             {
                 jumpsRemaining = maxJumps;
+                anim.SetInteger("state", 2);
             }
             isGrounded = true;
         }
