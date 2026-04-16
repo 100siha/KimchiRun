@@ -166,4 +166,9 @@ public class Player : MonoBehaviour
             isGrounded = true;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Player triggerEnter : " + other.gameObject.name);
+    }
 }
