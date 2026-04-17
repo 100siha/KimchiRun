@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 582344701}
   m_Layer: 0
   m_Name: Enemy Spawner
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 622138664}
   m_Layer: 0
   m_Name: Food Spawner
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -642,6 +642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14f2e99f07a7ac46bc2ea9ae62448e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  lives: 3
+  isInvincible: 0
   movingSpeed: 6.5
   jumpStrength: 12.5
   maxJumps: 2

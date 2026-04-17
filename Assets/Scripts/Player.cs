@@ -2,6 +2,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public int lives = 3;
+    public bool isInvincible = false;
+
+    private Rigidbody2D rigidBody;
+    private Animator animator;
+    private Collider2D collider2D;
+
+    private void Awake()
+    {
+        rigidBody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        collider2D = GetComponent<Collider2D>();
+    }
+
     private Rigidbody2D rb;
     private Animator anim;
 
@@ -169,6 +183,62 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Player triggerEnter : " + other.gameObject.name);
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Player triggerEnter in Enemy : " + other.gameObject.name);
+            Destroy(other.gameObject);
+
+            if (!isInvincible)
+            {
+                Damage();
+            }
+        }
+        else if (other.gameObject.CompareTag("Food"))
+        {
+            Debug.Log("Player triggerEnter in Food : " + other.gameObject.name);
+            Destroy(other.gameObject);
+            Heal();
+        }
+        else if (other.gameObject.CompareTag("Gold"))
+        {
+            Debug.Log("Player triggerEnter in Gold : " + other.gameObject.name);
+            Destroy(other.gameObject);
+            StartInvincible();
+        }
     }
+
+    private void Heal()
+    {
+        lives = Mathf.Min(lives + 1, 3);
+    }
+
+    private void Damage()
+    {
+        lives--;
+        if (lives <= 0)
+        {
+            KillPlayer();
+            Debug.Log("GAME OVER!!!");
+        }
+    } // Damage() 닫는 중괄호
+
+    private void StartInvincible()
+    {
+        isInvincible = true;
+        Invoke("StopInvincible", 5f);
+    }
+
+    private void StopInvincible()
+    {
+        isInvincible = false;
+    }
+
+    private void KillPlayer()
+    {
+        collider2D.enabled = false;
+        animator.enabled = false;
+        rigidBody.AddForceY(5f, ForceMode2D.Impulse);
+    }
+
 }
+
