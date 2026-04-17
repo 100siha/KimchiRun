@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public float movingSpeed = 6.5f; // 속도를 살짝 올렸습니다 (기존 5 -> 6.5). Inspector 덮어쓰기 방지를 위해 변수명 변경.
 
     [Header("점프 설정")]
-    public float jumpStrength = 12.5f;
+    public float jumpStrength = 13.5f; // 점프를 약간 올려달라는 요청에 따라 수정 (기존 12.5 -> 13.5)
 
     [Header("더블 점프 설정")]
     public int maxJumps = 2; // 최대 점프 횟수

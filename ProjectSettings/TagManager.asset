@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - SoneThimg
+  - Enemy
+  - Food
   layers:
   - Default
   - TransparentFX

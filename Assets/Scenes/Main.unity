@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a8039528542254abf1bfdd3272a7a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
-  minSpawnTime: 1
+  minSpawnTime: 2
   maxSpawnTime: 3
   buildingPrefabs:
   - {fileID: 41337937004420968, guid: e933b3244e9aeb14187e2136a6883d36, type: 3}
@@ -384,6 +384,57 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &622138663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 622138665}
+  - component: {fileID: 622138664}
+  m_Layer: 0
+  m_Name: Food Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &622138664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622138663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a8039528542254abf1bfdd3272a7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  minSpawnTime: 4
+  maxSpawnTime: 8
+  buildingPrefabs:
+  - {fileID: 41337937004420968, guid: 23085490181e0fc4fbcb17e2c686ade1, type: 3}
+  - {fileID: 41337937004420968, guid: eeefc81eb9293e949aeb7f7fdc29862f, type: 3}
+  - {fileID: 41337937004420968, guid: 859f89d7cbe1c8b4e9c9c976595560a1, type: 3}
+  - {fileID: 41337937004420968, guid: d8c5fddbd6efd7e46a188d502e149f17, type: 3}
+--- !u!4 &622138665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622138663}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.83, y: 0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -769,7 +820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   minSpawnTime: 1
-  maxSpawnTime: 3
+  maxSpawnTime: 1.5
   buildingPrefabs:
   - {fileID: 4832672625173887326, guid: fc67cf669cdb644428abc2d523035a7d, type: 3}
   - {fileID: 4832672625173887326, guid: 84668a73e6acb17478fac6e6a73e859b, type: 3}
@@ -1066,3 +1117,4 @@ SceneRoots:
   - {fileID: 1037847306}
   - {fileID: 1406398208}
   - {fileID: 582344702}
+  - {fileID: 622138665}
