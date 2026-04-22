@@ -209,13 +209,15 @@ public class Player : MonoBehaviour
 
     private void Heal()
     {
-        lives = Mathf.Min(lives + 1, 3);
+        //lives = Mathf.Min(lives + 1, 3);
+        GameManager.Instance.Lives = Mathf.Min(GameManager.Instance.Lives + 1, 3);
     }
 
     private void Damage()
     {
-        lives--;
-        if (lives <= 0)
+        //lives--;
+        GameManager.Instance.Lives--;
+        if (GameManager.Instance.Lives <= 0)
         {
             KillPlayer();
             Debug.Log("GAME OVER!!!");
