@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     public int Lives = 3;
     private bool isGameOver = false;
 
+    private float playStartTime;
+    public int highScore;
+    public int myScore;
+
     private void Awake()
     {
         if (Instance == null)
@@ -39,6 +43,8 @@ public class GameManager : MonoBehaviour
                 State = GameState.Playing;
                 UIManager.Instance.IntroUI.SetActive(false);
                 UIManager.Instance.ItemSpawner.SetActive(true);
+
+                playStartTime = Time.time;
             }
         }
         else if (State == GameState.Playing)
@@ -47,26 +53,44 @@ public class GameManager : MonoBehaviour
             {
                 State = GameState.GameOver;
                 UIManager.Instance.ItemSpawner.SetActive(false);
+                SaveScore();
             }
         }
         else if (State == GameState.GameOver)
         {
             if (isGameOver == false)
             {
-                Invoke("GameOverEvent", 1.5f);
+                Invoke("GameOverEvent", 3f);
             }
             isGameOver = true;
         }
-
     }
 
-    public void GameOverEvent()
+    private void SaveScore()
     {
+        myScore = CalculateScore();
+        if (myScore > highScore)
+        {
+            highScore = myScore;
+        }
+    }
+
+    public int CalculateScore()
+    {
+        int score = Mathf.FloorToInt(Time.time - playStartTime);
+        return score;
+    }
+
+    private void GameOverEvent()
+    {
+        Lives = 3;
         State = GameState.Intro;
         SceneManager.LoadScene("Main");
+        Debug.Log("Scene Reload!");
     }
 
-    //Lives 1 더해서 3 넘지 않게 함
+
+    //Live를 1을 더해 3을 넘지 않게 한다.
     public void AddLive()
     {
         Lives = Mathf.Min(Lives + 1, 3);
