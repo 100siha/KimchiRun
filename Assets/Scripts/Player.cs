@@ -7,13 +7,13 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rigidBody;
     private Animator animator;
-    private Collider2D collider2D;
+    private Collider2D playerCollider;
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        collider2D = GetComponent<Collider2D>();
+        playerCollider = GetComponent<Collider2D>();
     }
 
     private Rigidbody2D rb;
@@ -237,7 +237,7 @@ public class Player : MonoBehaviour
 
     private void KillPlayer()
     {
-        collider2D.enabled = false;
+        playerCollider.enabled = false;
         animator.enabled = false;
         rigidBody.AddForceY(5f, ForceMode2D.Impulse);
     }

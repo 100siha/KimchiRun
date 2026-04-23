@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BackgroundScroll : MonoBehaviour
 {
-    public float scrollSpeed = 0.5f;
+    // public float scrollSpeed = 0.5f;
     private MeshRenderer meshRenderer;
 
     void Start()
@@ -12,7 +12,7 @@ public class BackgroundScroll : MonoBehaviour
 
     void Update()
     {
-        float offsetX = Time.time * scrollSpeed;
-        meshRenderer.material.mainTextureOffset = new Vector2(offsetX, 0f);
+        float scrollSpeed = GameManager.Instance.CalculateGameSpeed() / 10;
+        meshRenderer.material.mainTextureOffset += new Vector2(scrollSpeed * Time.deltaTime, 0);
     }
 }

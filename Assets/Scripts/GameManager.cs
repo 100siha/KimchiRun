@@ -18,7 +18,17 @@ public class GameManager : MonoBehaviour
 
     private float playStartTime;
     public int highScore;
-    public int myScore;
+    public int MyScore;
+
+    public float CalculateGameSpeed()
+    {
+        if (State != GameState.Playing)
+        {
+            return 3.5f; // 기본 속도를 5에서 3.5로 늦춤
+        }
+        float speed = 3.5f + CalculateScore() * 0.5f;
+        return Mathf.Min(speed, 30f);
+    }
 
     private void Awake()
     {
@@ -68,11 +78,16 @@ public class GameManager : MonoBehaviour
 
     private void SaveScore()
     {
-        myScore = CalculateScore();
-        if (myScore > highScore)
+        MyScore = CalculateScore();
+        if (MyScore > highScore)
         {
-            highScore = myScore;
+            highScore = MyScore;
         }
+    }
+
+    public int GetHighScore()
+    {
+        return highScore;
     }
 
     public int CalculateScore()
@@ -80,6 +95,8 @@ public class GameManager : MonoBehaviour
         int score = Mathf.FloorToInt(Time.time - playStartTime);
         return score;
     }
+
+
 
     private void GameOverEvent()
     {
